@@ -1,33 +1,45 @@
-import sys
-
 import pygame
-
+from pygame.sprite import Group
 from settings import Settings
+from game_stats import GameStats
+from button import Button
 from ship import Ship
 import game_functions as gf
-from pygame.sprite import Group
+
 
 def run_game():
-    #Инициализирует игру и создает объект экрана
+    # Инициализирует игру и содает объект экрана.
     pygame.init()
     ai_settings = Settings()
     screen = pygame.display.set_mode(
         (ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
 
-    #Создание кота
+    # Создание кнопки Play.
+    play_button = Button(ai_settings, screen, "Play")
+
+    # Создание экземпляра для хранения игровой статистики.
+    stats = GameStats(ai_settings)
+
+    # Создание корабля, группы пуль и пришельцев.
     ship = Ship(ai_settings, screen)
-    #Создание группы для хранения пуль
     bullets = Group()
+    aliens = Group()
 
-    #Назначение цвета фона
-    bg_color = (230, 230, 230)
+    # Создание флота пришельцев.
+    gf.create_fleet(ai_settings, screen, ship, aliens)
 
-    #Запуск основного цикла игры
+    # Запуск основного цикла игры.
     while True:
-        gf.check_events(ai_settings, screen, ship, bullets)
-        ship.update()
-        bullets.update()
-        gf.update_screen(ai_settings, screen, ship, bullets)
-        
+        gf.check_events(ai_settings, screen, stats, play_button, ship, bullets)
+
+        if stats.game_active:
+            ship.update()
+            gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
+            gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
+
+        gf.update_screen(ai_settings, screen, stats, ship, aliens,
+                         bullets, play_button)
+
+
 run_game()
