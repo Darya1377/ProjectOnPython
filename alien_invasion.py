@@ -1,45 +1,47 @@
+import sys
 import pygame
-from pygame.sprite import Group
-from settings import Settings
+from setings import Settings
 from game_stats import GameStats
+from scoreboard import Scoreboard
 from button import Button
 from ship import Ship
+from alien import Alien
 import game_functions as gf
-
+from pygame.sprite import Group
 
 def run_game():
-    # Инициализирует игру и содает объект экрана.
+    #Инициализирует pygame, setings and screen's object
     pygame.init()
     ai_settings = Settings()
-    screen = pygame.display.set_mode(
-        (ai_settings.screen_width, ai_settings.screen_height))
+    screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
-
-    # Создание кнопки Play.
+    #Play button creating
     play_button = Button(ai_settings, screen, "Play")
-
-    # Создание экземпляра для хранения игровой статистики.
-    stats = GameStats(ai_settings)
-
-    # Создание корабля, группы пуль и пришельцев.
+    #Ship creating
     ship = Ship(ai_settings, screen)
+    #Creating group for bullets
     bullets = Group()
+    #Creating aliens' group
     aliens = Group()
-
-    # Создание флота пришельцев.
+    #Creating rows of aliens
     gf.create_fleet(ai_settings, screen, ship, aliens)
+    #Цвет фона
+    bg_color = (230, 230, 230)
 
-    # Запуск основного цикла игры.
+    #Creating an alien
+    alien = Alien(ai_settings, screen)
+
+    #Creating an example for saving game statistics and score
+    stats = GameStats(ai_settings)
+    sb = Scoreboard(ai_settings, screen, stats)
+
+    #Запуск основного цикла игры
     while True:
-        gf.check_events(ai_settings, screen, stats, play_button, ship, bullets)
-
+        gf.check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets)
         if stats.game_active:
             ship.update()
-            gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
-            gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
-
-        gf.update_screen(ai_settings, screen, stats, ship, aliens,
-                         bullets, play_button)
-
+            gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets)
+            gf.update_aliens(ai_settings, screen, stats, sb, ship, aliens, bullets)
+        gf.update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button)
 
 run_game()

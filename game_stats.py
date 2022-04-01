@@ -1,15 +1,16 @@
 class GameStats():
-    """Отслеживание статистики для игры Alien Invasion"""
-
+    """Statistics for the game"""
     def __init__(self, ai_settings):
-        """Ининциализирует статистику"""
+        """Initializes statistics"""
         self.ai_settings = ai_settings
         self.reset_stats()
-        #Игра запускается в неактивном состоянии.
+        #Starting game in inactive mode
         self.game_active = False
-        #Игра Alien Invasion запускается в активном состоянии.
-        self.game_active = True
+        #High score can't be deleted
+        self.high_score = 0
 
     def reset_stats(self):
-        """Инициализирует статистику, изменяющуюся в ходе игры"""
+        """Initializes statistics which changes during the game"""
         self.ships_left = self.ai_settings.ship_limit
+        self.score = 0
+        self.level = 1
