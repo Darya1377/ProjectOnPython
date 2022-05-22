@@ -18,4 +18,3 @@
 + [Python](https://www.python.org/) 3.x+
 + [Pygame](https://www.pygame.org/)
 
-## Запуск игры
