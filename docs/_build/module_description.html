@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Description of modules &#8212; Alien_invasion 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="description-of-modules">
+<h1>Description of modules<a class="headerlink" href="#description-of-modules" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li><p>alien_invasion</p>
+<p>Executable script. Initializes a game and creates an object of a screen. Starts the main game cycle.
+Tracks the events of a keyboard and a mouse. Displays the last drawn screen.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_game</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>alien.py</p>
+<p>Class for one alien.
+This class initializes the alien and makes starting position for it.
+It also checks the edges, if an alien reached the end of the screen.
+Class also displays the alien in the current position, moves the alien to the right or left.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygame.sprite</span> <span class="kn">import</span> <span class="n">Sprite</span>
+
+<span class="k">class</span> <span class="nc">Alien</span><span class="p">(</span><span class="n">Sprite</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Class for one alien&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">check_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;returns True if alien in the edge of screen&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">blitme</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;displays the alien in the current position&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>bullet.py</p>
+<p>Class for managing bullets. Creates bullet’s object in ship’s position.
+Moves the bullet up the screen. Outputs a bullet to the screen.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pygame.sprite</span> <span class="kn">import</span> <span class="n">Sprite</span>
+
+<span class="k">class</span> <span class="nc">Bullet</span><span class="p">(</span><span class="n">Sprite</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Class for managing bullets&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">ship</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates bullet&#39;s object in ship&#39;s position&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Moves the bullet up the screen&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">draw_bullet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Outputs a bullet to the screen&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>button.py</p>
+<p>Class that initializes button’s attributes. Creates text on it, makes it functional.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Button</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initializes button&#39;s attributes&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">prep_msg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Makes msg rectangular and aligns text by the center&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">draw_button</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Draws button&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>game_functions.py</p>
+<p>The ensemble of functions. Checks if a new score has appeared. Checks hitting of aliens and bottom side of screen.
+Processes hitting of ship and alien. Reacts on getting the edge of a screen for alien.
+Drops and changes direction of the fleet. Updates all aliens’ positions in the fleet.
+Initializes number of rows on the screen. Counts number of aliens in row.
+Creates an alien and place it in row. Creates aliens’ fleet. Updates bullets’ positions and deletes old bullets.
+Processes bullets’ collisions with aliens. Reacts on pushing buttons.
+Fires a bullet if the maximum has not yet been reached. Reacts on not pushing buttons.
+Handles keystrokes and mouse events. Activates new game by button Play pushing.
+Updates the images on the screen and the screen itself.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">src.bullet</span> <span class="kn">import</span> <span class="n">Bullet</span>
+<span class="kn">from</span> <span class="nn">src.alien</span> <span class="kn">import</span> <span class="n">Alien</span>
+
+<span class="k">def</span> <span class="nf">check_high_score</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">sb</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Checks if new highscore appeared&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">check_aliens_bottom</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span> <span class="n">ship</span><span class="p">,</span> <span class="n">aliens</span><span class="p">,</span> <span class="n">bullets</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Checks hitting of aliens and bottom side of screen&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">ship_hit</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span> <span class="n">ship</span><span class="p">,</span> <span class="n">aliens</span><span class="p">,</span> <span class="n">bullets</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Processing hitting of ship and alien&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">check_fleet_edges</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">aliens</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Reacts on getting the edge for alien&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">change_fleet_direction</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">aliens</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Drops and changes direction of the fleet&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">update_aliens</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span> <span class="n">ship</span><span class="p">,</span> <span class="n">aliens</span><span class="p">,</span> <span class="n">bullets</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Updates all aliens&#39; positions in the fleet&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">get_number_rows</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">ship_height</span><span class="p">,</span> <span class="n">alien_height</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Initializes number of rows on the screen&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">get_number_aliens_x</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">alien_width</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Counting number of aliens in row&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">create_alien</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">aliens</span><span class="p">,</span> <span class="n">alien_number</span><span class="p">,</span> <span class="n">row_number</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Creating an alien and place it in row&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">create_fleet</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">ship</span><span class="p">,</span> <span class="n">aliens</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Creating aliens&#39; fleet&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">update_bullets</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span> <span class="n">ship</span><span class="p">,</span> <span class="n">aliens</span><span class="p">,</span> <span class="n">bullets</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Updates bullets&#39; positions and deletes old bullets&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">check_bullet_alien_collisions</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span> <span class="n">ship</span><span class="p">,</span> <span class="n">aliens</span><span class="p">,</span> <span class="n">bullets</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Processing of bullets&#39; collisions with aliens&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">check_keydown_events</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">ship</span><span class="p">,</span> <span class="n">bullets</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Reacts on pushing buttons&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">fire_bullet</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">ship</span><span class="p">,</span> <span class="n">bullets</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Fires a bullet if the maximum has not yet been reached&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">check_keyup_events</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">ship</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Reacts on not pushing buttons&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">check_events</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span>
+             <span class="n">play_button</span><span class="p">,</span> <span class="n">ship</span><span class="p">,</span> <span class="n">aliens</span><span class="p">,</span> <span class="n">bullets</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Handles keystrokes and mouse events&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">check_play_button</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span> <span class="n">play_button</span><span class="p">,</span>
+                  <span class="n">ship</span><span class="p">,</span> <span class="n">aliens</span><span class="p">,</span> <span class="n">bullets</span><span class="p">,</span> <span class="n">mouse_x</span><span class="p">,</span> <span class="n">mouse_y</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Activates new game by button Play pushing&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">update_screen</span><span class="p">(</span><span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span> <span class="n">ship</span><span class="p">,</span> <span class="n">aliens</span><span class="p">,</span> <span class="n">bullets</span><span class="p">,</span> <span class="n">play_button</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot;Updates the images on the screen and the screen itself&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>game_stats.py</p>
+<p>Class to hold statistics for the game. Initializes statistics which changes during the game.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GameStats</span><span class="p">():</span>
+<span class="sd">&quot;&quot;&quot;Statistics for the game&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ai_settings</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initializes statistics&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">reset_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initializes statistics which changes during the game&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>scoreboard.py</p>
+<p>Class for print gaming info. Initializes attributes of score counting.
+Makes a score, high score, level graphical. Prints score, highscore and ships left on the screen.
+Prints how many ships/attempts left.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">src.ship</span> <span class="kn">import</span> <span class="n">Ship</span>
+
+<span class="k">class</span> <span class="nc">Scoreboard</span><span class="p">():</span>
+<span class="sd">&quot;&quot;&quot;Class for print gaming info&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initializes attributes of score counting&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">prep_score</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Makes score graphical&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">prep_high_score</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Makes high score graphical&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">show_score</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Prints score, highscore and ships left on the screen&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">prep_level</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Makes level graphical&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">prep_ships</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Prints how many ships/attempts left&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>setings.py</p>
+<p>Class for storing all game settings. Initializes settings that you can change during the game.
+Increases speed settings.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Settings</span><span class="p">():</span>
+<span class="sd">&quot;&quot;&quot;Class for storing all game settings&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initializing settings&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">initialize_dynamic_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initializes settings that you can change during the game&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">increase_speed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Increases speed settings&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>ship.py</p>
+<p>Initializes the ship and sets its initial position. Places a ship. Updates ship’s position with flag.
+Draws a ship in a current position.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Ship</span><span class="p">(</span><span class="n">Sprite</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ai_settings</span><span class="p">,</span> <span class="n">screen</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initializes the ship and sets its initial position&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">center_ship</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Places ship in the center of the bottom side&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Updates ship&#39;s position with flag&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">blitme</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Draws a ship in a current position&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Alien_invasion</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Description of modules</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Pozhidaeva Alyona, Baturova Dari, Nadezhdina Darya.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/module_description.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
