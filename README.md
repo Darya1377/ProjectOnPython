@@ -1,3 +1,4 @@
+[![Upload Python Package](https://github.com/Darya1488/ProjectOnPython/actions/workflows/python-publish.yml/badge.svg)](https://github.com/Darya1488/ProjectOnPython/actions/workflows/python-publish.yml)
 # Alien Invasion
 Представляем вашему вниманию наш проект __"Alien Invasion"__. Это базовая игра, похожая на "Space Invaders", написанная на Python3 с использованием Pygame.
 
