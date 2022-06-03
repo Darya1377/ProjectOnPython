@@ -13,10 +13,6 @@ on:
 
 permissions:
   contents: read
-  
-defaults:
-      run:
-        working-directory: ./app
 
 jobs:
   deploy:
@@ -29,5 +25,5 @@ jobs:
       run:
         pip install pybuilder && ls
     - name: Building a project
-      run: pyb ./build.py
+      run: pyb build.py
 
